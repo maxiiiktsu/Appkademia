@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="main.php" method="post"> <button>Submit</button></form>
+    <form action="index.php" method="post"> <button>Submit</button></form>
 </body>
 
 </html>
@@ -21,22 +21,40 @@ date_default_timezone_set('Europe/Bratislava');
 echo date("Y-m-d H:i");
 $cas = date("Y-m-d H:i");
 $h = date("H");
-if ($h >= 20) {
-    die("nepodarilo sa zapisat");
-}
-file_put_contents("log.txt", "$cas", FILE_APPEND);
-if ($h >= 8) {
-    file_put_contents("log.txt", " meskanie\n", FILE_APPEND);
-};
-if ($h >= 20) {
-    die("nepodarilo sa zapisat");
+
+
+
+function Arrival($h)
+{
+    $meskanie = FALSE;
+
+    if ($h >= 8) {
+        $meskanie = TRUE;
+    }
 }
 
 
-$log;
+
+function WriteLog($cas, $h)
+{
+    if ($h >= 20 && $h <= 24) {
+        die("nepodarilo sa zapisat");
+    }
+
+    if ($meskanie = TRUE) {
+        file_put_contents("log.txt", "$cas" . " meskanie\n", FILE_APPEND);
+    } else {
+
+        file_put_contents("log.txt", "$cas\n", FILE_APPEND);
+    }
+}
+
+
+
 function GetLog()
 {
     $log = file_get_contents("log.txt");
     echo nl2br("$log\n");
 }
+WriteLog($cas, $h);
 GetLog();
