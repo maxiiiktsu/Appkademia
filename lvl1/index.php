@@ -24,7 +24,7 @@ $h = date("H");
 
 
 
-function Arrival($h)
+function Arrival($h,)
 {
     $meskanie = FALSE;
 
@@ -35,7 +35,7 @@ function Arrival($h)
 
 
 
-function WriteLog($cas, $h)
+function WriteLog($cas, $h,)
 {
     if ($h >= 20 && $h <= 24) {
         die("nepodarilo sa zapisat");
