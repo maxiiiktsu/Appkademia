@@ -28,7 +28,7 @@ $cas = date("Y-m-d H:i");
 $h = 7;
 
 
-function Arrival($h,)
+function Arrival($h)
 {
     $meskanie = FALSE;
 
@@ -53,10 +53,13 @@ function WriteLog($cas, $h,)
     }
 }
 
-function NameLog()
+
+$name = $_GET["name"];
+
+function NameLog($name)
 {
-    $name = $_GET["name"];
     $names = array();
+
 
 
     if (file_exists("studenti.json")) {
@@ -70,7 +73,12 @@ function NameLog()
     $names[] = $name;
 
     file_put_contents("studenti.json", json_encode($names, JSON_PRETTY_PRINT));
+    echo "<pre>";
+    print_r($names);
+    echo "</pre>";
 }
+//$encoded_names = array();
+//$encoded_names = json_encode($names, JSON_PRETTY_PRINT);
 
 
 
@@ -79,6 +87,30 @@ function GetLog()
     $log = file_get_contents("log.txt");
     echo nl2br("$log\n");
 }
+function ArrivalLog()
+{
+    $arrival = array();
+    $time = date("H:i:s");
+
+    if (file_exists("prichody.json")) {
+        $arrival = json_decode(file_get_contents("prichody.json"), true);
+    };
+
+    if (isset($arrival[$time])) {
+        $arrival[]++;
+    }
+
+    $arrival[] = $time;
+
+
+    file_put_contents("prichody.json", json_encode($arrival, JSON_PRETTY_PRINT));
+
+    echo "<pre>";
+    print_r($arrival);
+    echo "</pre>";
+}
+
 WriteLog($cas, $h);
 GetLog();
-NameLog();
+NameLog($name);
+ArrivalLog();
