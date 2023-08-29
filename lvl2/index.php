@@ -22,17 +22,17 @@
 <?php
 echo "Ahoj <br>";
 date_default_timezone_set('Europe/Bratislava');
-echo date("Y-m-d H:i");
 $cas = date("Y-m-d H:i");
+echo $cas;
 //$h = date("H");
 $h = 7;
 
 function Arrival($h)
 {
-    $meskanie = FALSE;
+    $meskanie = false;
 
     if ($h >= 8) {
-        $meskanie = TRUE;
+        $meskanie = true;
     }
 }
 
@@ -54,8 +54,6 @@ class NameLogger
         };
 
         if (isset($names[$name])) {
-            $names[]++;
-        } else {
             $names[] = 1;
         }
 
@@ -84,8 +82,6 @@ class TimeLogger
         };
 
         if (isset($arrival[$time])) {
-            $arrival[]++;
-        } else {
             $arrival[] = 1;
         }
 
@@ -93,9 +89,9 @@ class TimeLogger
 
         if (date("H") >= 8) {
 
-            $times = strval($time) . " - meskanie";
+            $times = $time . " - meskanie";
         } else {
-            $times = strval($time);
+            $times = $time;
         }
         $arrival[] = $times;
 
