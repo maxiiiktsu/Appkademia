@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="index.php" method="$_POST">
+    <form action="index.php" method="get">
 
         <button>zapisat</button>
         <input type="text" name="name">
@@ -24,6 +24,7 @@ echo "Ahoj <br>";
 date_default_timezone_set('Europe/Bratislava');
 $cas = date("Y-m-d H:i");
 echo $cas;
+echo "<br>";
 //$h = date("H");
 $h = 7;
 
@@ -36,7 +37,14 @@ function Arrival($h)
     }
 }
 
-$name = $_GET["name"];
+if (isset($_GET['name'])) {
+    $name = $_GET['name'];
+} else {
+    die("zadaj meno prosim");
+}
+
+
+
 
 
 class NameLogger
