@@ -1,0 +1,68 @@
+.inpt{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+
+}
+
+
+.nameput{
+    width: 350px;
+    height: 70px;
+    font-size: 32px;
+    text-align: center;
+    border-radius: 50px;
+    border-color: rgba(128, 128, 128, 0.306);
+    border-width: 3px;
+    
+}
+
+.butput{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border-color: rgba(128, 128, 128, 0.306);
+    background-color: white;
+    background-image: url(imgs/thumbs-up.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 7px;
+    background-size: 35px;
+    border-width: 3px;
+
+}
+
+.cas{
+    font-size: 40px;
+    color: rgb(95, 94, 94);
+}
+
+.datab{
+    font-size: 20px;
+    width: 30rem;
+    text-align: justify;
+    margin-left: 50px;
+    letter-spacing: 6px;
+}
+
+.datac{
+    font-size: 20px;
+    width: 30rem;
+    text-align: justify;
+    letter-spacing: 5px;
+    
+    
+    
+    
+}
+
+.datas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: rgb(95, 94, 94); ;
+
+}
