@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Listen
+
+# Model Form Field configuration
+form: $/event/listen/models/listen/fields.yaml
+
+# Model Class name
+modelClass: Event\Listen\Models\Listen
+
+# Default redirect location
+defaultRedirect: event/listen/listens
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: event/listen/listens/update/:id
+    redirectClose: event/listen/listens
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: event/listen/listens
+    redirectClose: event/listen/listens
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

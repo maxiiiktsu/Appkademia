@@ -1,7 +1,9 @@
-<?php namespace App\Arrival;
+<?php namespace Event\Listen;
 
 use Backend;
 use System\Classes\PluginBase;
+use App\Arrival\Models\Arrival;
+use Log;
 
 /**
  * Plugin Information File
@@ -16,9 +18,9 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'Arrival',
+            'name' => 'Listen',
             'description' => 'No description provided yet...',
-            'author' => 'App',
+            'author' => 'Event',
             'icon' => 'icon-leaf'
         ];
     }
@@ -36,7 +38,18 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-        //
+        Arrival::extend(function ($model){
+            $model->bindEvent("model.afterCreate", function () use($model){
+                $h = date('H');
+
+                if ($h < 8){
+                    Log::info('skorosi');
+                }
+                if ($h > 8){
+                    Log::info('neskorosi');
+                }
+            });
+        });
     }
 
     /**
@@ -47,7 +60,7 @@ class Plugin extends PluginBase
 
 
         return [
-            'App\Arrival\Components\MyComponent' => 'myComponent',
+            'Event\Listen\Components\MyComponent' => 'myComponent',
         ];
     }
 
@@ -59,8 +72,8 @@ class Plugin extends PluginBase
 
 
         return [
-            'app.arrival.some_permission' => [
-                'tab' => 'Arrival',
+            'event.listen.some_permission' => [
+                'tab' => 'Listen',
                 'label' => 'Some permission'
             ],
         ];
@@ -74,11 +87,11 @@ class Plugin extends PluginBase
 
 
         return [
-            'arrival' => [
-                'label' => 'Arrival',
-                'url' => Backend::url('app/arrival/Arrivals'),
+            'listen' => [
+                'label' => 'Listen',
+                'url' => Backend::url('event/listen/mycontroller'),
                 'icon' => 'icon-leaf',
-                'permissions' => ['app.arrival.*'],
+                'permissions' => ['event.listen.*'],
                 'order' => 500,
             ],
         ];
